@@ -1,0 +1,20 @@
+Brendan McShane
+
+The initial challenge for this hackathon was building a training dataset, because only the
+testing dataset was provided. I found tutorials and a some source code for webscraping images
+off of Google Images to build a database that I tweaked for my own purposes. It included a
+javascript file that scraped the urls from the images of a search result and dumped them into
+a text file, and then a python script looped through and downloaded all the images to a given
+output folder. I googled 'Adults', 'Teenagers', and 'Toddlers' and put the results in three
+separate folders in my Training_Data directory.
+
+From there I needed to clean the data. I used ImageDataGenerator.flow_from_directory to collect
+and scale the data, shear it, and set the target_size, batch_size, and class_mode to
+'categorical' because we're working with 3 classes.
+
+The next step was building and training the model. I used a tensorflow.keras.models.Sequential
+model, with convolutional and maxpooling layers. I used two of each, and then applied flattening
+and connected a fully functioning ANN to make the predictions. I compiled it and fit it to the
+training data (25 epochs gave me the best results). After that, I used the csv python package
+to read from the provided Test.csv file and write my predictions to the bmcshaneSubmission.csv
+file.
